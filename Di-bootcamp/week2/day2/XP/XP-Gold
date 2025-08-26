@@ -1,0 +1,34 @@
+#create a function to determine if a person can retire based on their gender and age
+
+def get_age(year, month, day):
+    # Hard-coded current date
+    CURRENT_YEAR = 2025
+    CURRENT_MONTH = 9
+    CURRENT_DAY = 1
+
+    age = CURRENT_YEAR - year
+    if (month, day) > (CURRENT_MONTH, CURRENT_DAY):#use tuple comparison for month and day
+        # If birthday hasn't occurred yet this year, subtract one from age
+        age -= 1
+    return age
+
+def can_retire(gender, date_of_birth):
+    # date_of_birth format: "yyyy/mm/dd"
+    year, month, day = map(int, date_of_birth.split('/'))#use map to convert strings to integers
+    age = get_age(year, month, day)#get the age using the helper function
+    # Hard-coded retirement ages
+    if gender == 'm':
+        return age >= 67
+    elif gender == 'f':
+        return age >= 62
+    else:
+        return False
+
+# Example usage:
+if __name__ == "__main__":
+    gender = input("Enter your gender (m/f): ").strip().lower()
+    dob = input("Enter your date of birth (yyyy/mm/dd): ").strip()
+    if can_retire(gender, dob):
+        print("You can retire.")
+    else:
+        print("You cannot retire yet.")

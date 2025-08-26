@@ -338,40 +338,13 @@ result = ''
 for char in phrase:
     result = result + char
     print(result)
-===============================
 
-import re
+==============================
 
-MATRIX_STR = '''
-7ir
-Tsi
-h%x
-i ?
-sM# 
-$a 
-#t%'''
-
-# Step 1: Transform the string into a 2D list (matrix)
-matrix = [list(row) for row in MATRIX_STR.strip().split('\n')]
-print(matrix)
-
-
-# Step 2: Read column by column, top to bottom, left to right
-num_matrix = len(matrix)
-num_cols = len(matrix[0])
-decoded_chars = []
-
-for col in range(num_cols):
-    for row in range(num_matrix):
-        decoded_chars.append(matrix[row][col])
-
-# Step 3 & 4: Replace groups of non-alpha chars between alpha chars with a space
-
-# Join all characters into a string
-decoded_str = ''.join(decoded_chars)
-
-# Use regex to replace non-alpha groups between alpha chars with a single space
-# The pattern replaces any sequence of non-alpha chars between two alpha chars with a space
-message = re.sub(r'(?<=\w)[^a-zA-Z0-9]+(?=\w)', ' ', decoded_str)
-
-print(message)
+birth_date = input('enter your birth date (dd/mm/yyyy): ')
+year = int(birth_date[6:])
+print(year)
+print(type(year))
+age = 2025 - year
+print(age)
+print(type(age))
