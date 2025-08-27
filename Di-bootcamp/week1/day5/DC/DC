@@ -3,14 +3,13 @@
 words = input("Enter words separated by commas: ")
 
 # Step 2: Split the String
-word_list = words.split(',')#create a list of words from the input string
+word_list = words.split(',')#create a list of words from the input string separated by commas
 
 # Step 3: Sort the List
 word_list.sort()
 
-# Step 4: Join the Sorted List
+# Step 4: Join the Sorted List back into a String
 sorted_words = ','.join(word_list)#populate a new string with the sorted words separated by commas
-
 
 # Step 5: Print the Result
 print(sorted_words)

@@ -1,106 +1,195 @@
-#1
-keys = ['Ten', 'Twenty', 'Thirty']
-values = [10, 20, 30]
+#1 Create a Cat class with name and age attributes.
+# Step 1: Create Cat Class and Cat Objects
+class Cat:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-result_dict = dict(zip(keys, values))
-print(result_dict)
+# create three Cat objects
+cat1 = Cat("Mittens", 3)
+cat2 = Cat("Whiskers", 7)
+cat3 = Cat("Shadow", 5)
+
+# Step 2: Function to find the oldest cat
+def find_oldest_cat(cat_a, cat_b, cat_c):
+    oldest = cat_a
+    if cat_b.age > oldest.age:
+        oldest = cat_b
+    if cat_c.age > oldest.age:
+        oldest = cat_c
+    return oldest
+
+# Step 3: Print the oldest cat’s details
+oldest_cat = find_oldest_cat(cat1, cat2, cat3)
+print(f"The oldest cat is {oldest_cat.name}, and is {oldest_cat.age} years old.")
 
 #2
-#setting the dictionary
-family = {"rick": 43, 'beth': 13, 'morty': 5, 'summer': 8}
-total_cost = 0
-#looping through the dictionary to calculate the total cost
-#retrieveing keys and values
-for name, age in family.items():
-    #populating the price variable with the correct price based on age
-    if age < 3:
-        price = 0
-    elif 3 <= age <= 12:
-        price = 10
-    else:
-        price = 15
-    #printing the name and price of each family member
-    print(f"{name.capitalize()}: ${price}")
-    #adding the price to the total cost
-    total_cost += price
+# Step 1: Create the Dog Class
+class Dog:
+    def __init__(self, name, height):
+        self.name = name
+        self.height = height
 
-print(f"Total cost: ${total_cost}")
+    def bark(self):
+        print(f"{self.name} goes woof!")
+
+    def jump(self):
+        print(f"{self.name} jumps {self.height * 2} cm high!")
+
+# Step 2: Create Dog Objects
+davids_dog = Dog("Rex", 60)
+sarahs_dog = Dog("Teacup", 20)
+
+# Step 3: Print Dog Details and Call Methods
+print(f"David's dog is named {davids_dog.name} and is {davids_dog.height} cm tall.")
+davids_dog.bark()
+davids_dog.jump()
+
+print(f"Sarah's dog is named {sarahs_dog.name} and is {sarahs_dog.height} cm tall.")
+sarahs_dog.bark()
+sarahs_dog.jump()
+
+# Step 4: Compare Dog Sizes
+if davids_dog.height > sarahs_dog.height:
+    print(f"{davids_dog.name} is bigger than {sarahs_dog.name}.")
+elif davids_dog.height < sarahs_dog.height:
+    print(f"{sarahs_dog.name} is bigger than {davids_dog.name}.")
+else:
+    print(f"{davids_dog.name} and {sarahs_dog.name} are the same size!")
 
 #3
-brand = {
-    "name": "Zara",
-    "creation_date": 1975,
-    "creator_name": "Amancio Ortega Gaona",
-    "type_of_clothes": ["men", "women", "children", "home"],
-    "international_competitors": ["Gap", "H&M", "Benetton"],
-    "number_stores": 7000,
-    "major_color": {
-        "France": "blue",
-        "Spain": "red",
-        "US": ["pink", "green"]
-    }
-}
+# Step 1: Create the Song Class
+class Song:
+    def __init__(self, lyrics):
+        self.lyrics = lyrics
 
-# Change the value of number_stores to 2
-brand["number_stores"] = 2
+    def sing_me_a_song(self):
+        for line in self.lyrics:
+            print(line)
 
-# Print a sentence describing Zara’s clients using the type_of_clothes key
-print(f"Zara's clients are: {', '.join(brand['type_of_clothes'])}.")
-#join() method is used to join the elements of the list together into a single string,
-# with each element separated by commas.
+# Example usage
+stairway = Song([
+    "There’s a lady who's sure",
+    "all that glitters is gold",
+    "and she’s buying a stairway to heaven"
+    ])
 
-# Add a new key 'country_creation' with the value Spain
-brand["country_creation"] = "Spain"
-
-# Check if international_competitors exists and add “Desigual” to the list
-if "international_competitors" in brand:
-    brand["international_competitors"].append("Desigual")
-
-# Delete the creation_date key
-brand.pop("creation_date", None)
-#pop() method is used to remove the specified key from the dictionary.
-#The second argument None is provided to avoid KeyError if the key does not exist.
-
-# Print the last item in international_competitors
-print("Last international competitor:", brand["international_competitors"][-1])
-
-# Print the major colors in the US
-print("Major colors in the US:", ", ".join(brand["major_color"]["US"]))
-
-# Print the number of keys in the dictionary
-print("Number of keys in brand:", len(brand))
-
-# Print all keys of the dictionary
-print("Keys in brand:", list(brand.keys()))
-
-# Bonus
-more_on_zara = {
-    "creation_date": 1975,
-    "number_stores": 10000
-}
-brand.update(more_on_zara)
-#update() method is used to update the dictionary with key-value pairs from 
-# another dictionary (more_on_zara in this case).
-#The updated dictionary will contain all the key-value pairs from the original 
-# dictionary (brand) and the additional key-value pairs from more_on_zara.
-print("Updated brand dictionary:", brand)
+# Call the method
+stairway.sing_me_a_song()
 
 #4
-users = ["Mickey", "Minnie", "Donald", "Ariel", "Pluto"]
+# Step 1: Define the Zoo Class
+class Zoo:
+    def __init__(self, zoo_name):
+        self.zoo_name = zoo_name
+        self.animals = []
 
-# 1. Dictionary with character as key and index as value
-disney_users_A = {user: idx for idx, user in enumerate(users)}
-#enumerate() method is used to iterate over the elements of a sequence (in this case, 
-# the list users) 
-# and simultaneously get both the index and the value of each element.
-#The resulting dictionary will have the characters as keys and their corresponding 
-# indices as values.
-print("disney_users_A:", disney_users_A)
+    # Add new animal if it's not already in the zoo
+    def add_animal(self, new_animal):
+        if new_animal not in self.animals:
+            self.animals.append(new_animal)
 
-# 2. Dictionary with index as key and character as value
-disney_users_B = {idx: user for idx, user in enumerate(users)}
-print("disney_users_B:", disney_users_B)
+    # Print all animals currently in the zoo
+    def get_animals(self):
+        print(f"Animals in {self.zoo_name}: {self.animals}")
 
-# 3. Dictionary with character as key and index as value, sorted alphabetically by character
-disney_users_C = {user: idx for idx, user in enumerate(sorted(users))}
-print("disney_users_C:", disney_users_C)
+    # Sell (remove) an animal if it exists
+    def sell_animal(self, animal_sold):
+        if animal_sold in self.animals:
+            self.animals.remove(animal_sold)
+
+    # Sort and group animals alphabetically
+    def sort_animals(self):
+        sorted_animals = sorted(self.animals)
+        grouped_animals = {}
+
+        for animal in sorted_animals:
+            first_letter = animal[0].upper()
+            if first_letter not in grouped_animals:
+                grouped_animals[first_letter] = []
+            grouped_animals[first_letter].append(animal)
+
+        return grouped_animals
+
+    # Print grouped animals
+    def get_groups(self):
+        grouped = self.sort_animals()
+        for letter, group in grouped.items():
+            print(f"{letter}: {group}")
+
+
+# Example usage:
+zoo = Zoo("Safari Park")
+
+zoo.add_animal("Lion")
+zoo.add_animal("Zebra")
+zoo.add_animal("Cat")
+zoo.add_animal("Cougar")
+zoo.add_animal("Giraffe")
+zoo.add_animal("Bear")
+zoo.add_animal("Baboon")
+
+zoo.get_animals()
+
+zoo.sell_animal("Cat")
+zoo.get_animals()
+
+zoo.get_groups()
+
+# Step 1: Define the Zoo Class
+class Zoo:
+    def __init__(self, zoo_name):
+            self.zoo_name = zoo_name
+            self.animals = []
+
+    def add_animal(self, new_animal):
+        if new_animal not in self.animals:
+            self.animals.append(new_animal)
+
+    def get_animals(self):
+        print(f"Animals in {self.zoo_name}: {self.animals}")
+
+    def sell_animal(self, animal_sold):
+        if animal_sold in self.animals:
+            self.animals.remove(animal_sold)
+
+    def sort_animals(self):
+        sorted_animals = sorted(self.animals)
+        grouped_animals = {}
+        for animal in sorted_animals:
+            first_letter = animal[0].upper()
+            if first_letter not in grouped_animals:
+                grouped_animals[first_letter] = []
+            grouped_animals[first_letter].append(animal)
+        return grouped_animals
+
+    def get_groups(self):
+        grouped = self.sort_animals()
+        for letter, group in grouped.items():
+            print(f"{letter}: {group}")
+
+
+# Step 2: Create a Zoo Object
+my_zoo = Zoo("Wonderland Zoo")
+
+# Step 3: Call the Zoo Methods
+# Add animals
+my_zoo.add_animal("Lion")
+my_zoo.add_animal("Zebra")
+my_zoo.add_animal("Cat")
+my_zoo.add_animal("Cougar")
+my_zoo.add_animal("Giraffe")
+my_zoo.add_animal("Bear")
+my_zoo.add_animal("Baboon")
+
+# Display animals
+my_zoo.get_animals()
+
+# Sell an animal
+my_zoo.sell_animal("Cat")
+my_zoo.get_animals()
+
+# Show groups
+print("\nGrouped animals:")
+my_zoo.get_groups()
+

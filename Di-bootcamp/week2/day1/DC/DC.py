@@ -1,50 +1,56 @@
-# ask user for a word and store it in a variable
-word = input("Enter a word: ")
-# create a dictionary to store characters and their indices
-char_indices = {}
-#iterate through the word and populate the dictionary with characters as keys 
-# and their indices as values
-#use 'for' loop to iterate through each character in the word
-for index, char in enumerate(word):
-    #check if the character is already a key in the dictionary
-    if char in char_indices:
-        #modify the entry - append the index to the list of indices for that character
-        char_indices[char].append(index)
-    else:
-        #create a NEW ENTRY in the dictionary with the character as the key
-        # and a list containing the current index as the value
-        char_indices[char] = [index]
+# Step 1: Create the Farm Class
+class Farm:
+    # Step 2: Implement __init__
+    def __init__(self, farm_name):
+        self.name = farm_name
+        self.animals = {}
 
-print(char_indices)
-#-------------------------------------------------
-#2
-items_purchase = {"Water": "$1", "Bread": "$3", "TV": "$1,000", "Fertilizer": "$20"}
-wallet = "$300"
+    # Step 3: Implement add_animal
+    def add_animal(self, animal_type, count=1):
+        if animal_type in self.animals:
+            self.animals[animal_type] += count
+        else:
+            self.animals[animal_type] = count
 
-# items_purchase = {"Apple": "$4", "Honey": "$3", "Fan": "$14", "Bananas": "$4", "Pan": "$100", "Spoon": "$2"}
-# wallet = "$100"
+    # Step 4: Implement get_info
+    def get_info(self):
+        output = f"{self.name}'s Farm\n"
+        output += "-" * 20 + "\n"
+        for animal, count in self.animals.items():
+            output += f"{animal:<10} : {count}\n"
+        output += "-" * 20 + "\n"
+        output += "E-I-E-I-0!"
+        return output
 
-# items_purchase = {"Phone": "$999", "Speakers": "$300", "Laptop": "$5,000", "PC": "$1200"}
-# wallet = "$1"
+    # Step 6: Implement get_animal_types
+    def get_animal_types(self):
+        return sorted(self.animals.keys())
 
-# Clean wallet amount
-#since string is immutable, we need to create a new string by replacing $ and , with nothing
-#and then convert to integer
-wallet_amount = int(wallet.replace("$", "").replace(",", ""))
-#replace $ and , with nothing and convert to integer
+    # Step 7: Implement get_short_info
+    def get_short_info(self):
+        animal_list = []
+        for animal, count in self.animals.items():
+            if count > 1:
+                animal_list.append(animal + "s")
+            else:
+                animal_list.append(animal)
+        sorted_animals = sorted(animal_list)
+        
+        if len(sorted_animals) > 1:
+            animals_str = ", ".join(sorted_animals[:-1]) + " and " + sorted_animals[-1]
+        else:
+            animals_str = sorted_animals[0]
+        
+        return f"{self.name}'s farm has {animals_str}."
 
-# Clean item prices and determine affordable items
-affordable = []
-for item, price in items_purchase.items():
-    # Clean price amount: replace $ and , with nothing and convert to integer
-    price_amount = int(price.replace("$", "").replace(",", ""))
-    #check if the price is less than or equal to the wallet amount
-    if price_amount <= wallet_amount:
-        affordable.append(item)
 
-# Sort and output
-print('')
-if not affordable:
-    print("Nothing")
-else:
-    print(sorted(affordable))
+# Step 5 + Step 6 + Step 7: Test the code
+my_farm = Farm("McDonald")
+
+my_farm.add_animal("cow", 3)
+my_farm.add_animal("goat", 2)
+my_farm.add_animal("sheep", 5)
+
+print(my_farm.get_info())
+print("\nAnimal types:", my_farm.get_animal_types())
+print(my_farm.get_short_info())
