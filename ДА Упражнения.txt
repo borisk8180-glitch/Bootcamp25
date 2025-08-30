@@ -348,3 +348,41 @@ print(type(year))
 age = 2025 - year
 print(age)
 print(type(age))
+
+================================
+
+class Door:
+    def __init__(self, is_opened=False):
+        self.is_opened = is_opened
+
+    def open_door(self):
+        if not self.is_opened:
+            self.is_opened = True
+            print("The door is now open.")
+        else:
+            print("The door is already open.")
+
+    def close_door(self):
+        if self.is_opened:
+            self.is_opened = False
+            print("The door is now closed.")
+        else:
+            print("The door is already closed.")
+
+class BlockedDoor(Door):
+    def open_door(self):
+        raise Exception("This door is blocked and cannot be opened!")
+
+    def close_door(self):
+        raise Exception("This door is blocked and cannot be closed!")
+# Normal door
+door = Door()
+door.open_door()   # The door is now open.
+door.close_door()  # The door is now closed.
+
+# Blocked door
+blocked = BlockedDoor()
+try:
+    blocked.open_door()
+except Exception as e:
+    print(e)  # This door is blocked and cannot be opened!

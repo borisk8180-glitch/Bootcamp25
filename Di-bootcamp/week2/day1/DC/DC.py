@@ -1,7 +1,6 @@
 # Step 1: Create the Farm Class
-class Farm:
-    # Step 2: Implement __init__
-    def __init__(self, farm_name):
+class Farm:    
+    def __init__(self, farm_name):# Step 2: Implement __init__
         self.name = farm_name
         self.animals = {}
 
@@ -13,28 +12,28 @@ class Farm:
             self.animals[animal_type] = count
 
     # Step 4: Implement get_info
-    def get_info(self):
+    def get_info(self): #method to return a formatted string
         output = f"{self.name}'s Farm\n"
-        output += "-" * 20 + "\n"
-        for animal, count in self.animals.items():
-            output += f"{animal:<10} : {count}\n"
-        output += "-" * 20 + "\n"
+        output += "-" * 20 + "\n" #adds a line of dashes
+        for animal, count in self.animals.items(): #iterates through the dictionary items(key-value pairs)
+            output += f"{animal:<10} : {count}\n"  #formats the animal count and adds it to be left-aligned within a 10-character width
+        output += "-" * 20 + "\n" #adds another line of dashes
         output += "E-I-E-I-0!"
         return output
 
     # Step 6: Implement get_animal_types
     def get_animal_types(self):
-        return sorted(self.animals.keys())
+        return sorted(self.animals.keys()) #use sorted() to return a sorted list of the dictionary keys (animal types)
 
     # Step 7: Implement get_short_info
     def get_short_info(self):
         animal_list = []
-        for animal, count in self.animals.items():
+        for animal, count in self.animals.items(): #iterates through the dictionary items (key-value pairs)
             if count > 1:
-                animal_list.append(animal + "s")
+                animal_list.append(animal + "s") #pluralize the animal name by adding 's' if count > 1
             else:
                 animal_list.append(animal)
-        sorted_animals = sorted(animal_list)
+        sorted_animals = sorted(animal_list) #sorts the list of animal names alphabetically
         
         if len(sorted_animals) > 1:
             animals_str = ", ".join(sorted_animals[:-1]) + " and " + sorted_animals[-1]

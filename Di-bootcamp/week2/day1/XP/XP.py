@@ -102,13 +102,13 @@ class Zoo:
     def sort_animals(self):
         sorted_animals = sorted(self.animals)
         grouped_animals = {}
-
-        for animal in sorted_animals:
-            first_letter = animal[0].upper()
-            if first_letter not in grouped_animals:
+        
+        #create groups based on the first letter of each animal's name
+        for animal in sorted_animals: 
+            first_letter = animal[0].upper() # Convert to uppercase for consistency
+            if first_letter not in grouped_animals: # If the letter key doesn't exist, create it
                 grouped_animals[first_letter] = []
             grouped_animals[first_letter].append(animal)
-
         return grouped_animals
 
     # Print grouped animals
