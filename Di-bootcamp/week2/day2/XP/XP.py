@@ -44,6 +44,8 @@ chartreux_obj = Chartreux("Milo", 5)
 siamese_obj = Siamese("Simba", 2)
 
 all_cats = [bengal_obj, chartreux_obj, siamese_obj]
+# all_cats = bengal_obj.__str__, chartreux_obj.__str__, siamese_obj.__str__
+# print(all_cats)
 
 # ✅ Step 3: Создаём экземпляр Pets
 sara_pets = Pets(all_cats)

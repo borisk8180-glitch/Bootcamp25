@@ -12,6 +12,7 @@ class Pagination:
     def get_visible_items(self):
         start = self.current_idx * self.page_size
         end = start + self.page_size
+        #print(f'начало: {start}, конец: {end}')
         return self.items[start:end]
 
     # Step 4: Navigation methods
