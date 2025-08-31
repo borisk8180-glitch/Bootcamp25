@@ -40,18 +40,7 @@ class Currency:
 
 #2
 # func.py
-
-def add_numbers(a, b):
-    result = a + b
-    print(f"The sum of {a} and {b} is {result}")
-
 # exercise_one.py
-
-# Вариант 1: импорт конкретной функции
-from func import add_numbers
-
-# Вызов функции
-add_numbers(3, 7)
 
 #3
 import string
