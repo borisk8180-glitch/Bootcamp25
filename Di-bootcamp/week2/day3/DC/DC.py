@@ -20,7 +20,7 @@ class Circle:
 
     def area(self):
         """Return the area of the circle."""
-        return math.pi * self.radius ** 2
+        return round(math.pi * self.radius ** 2)
 
     # Dunder method to print the circle
     def __str__(self):
@@ -82,3 +82,8 @@ print(c1 == Circle(radius=5))  # True
 circle_list = [c2, c1, c3]
 circle_list.sort()
 print(circle_list)      # [Circle(radius=5.00), Circle(radius=5.00), Circle(radius=10.00)]
+for c in circle_list:
+    print(c)             # Circle with radius: 5.00
+    print(c.diameter)    # 10
+    print(f"Area of c: {c.area():.2f}")  # Area of c: 78.54
+    print()               # New line for better readability

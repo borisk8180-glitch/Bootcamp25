@@ -72,6 +72,7 @@ print(c1)
 
 # print(c1 + c3)
 # TypeError: Cannot add between Currency type <dollar> and <shekel>
+
 #2
 # func.py
 # exercise_one.py
@@ -90,6 +91,7 @@ for i in range(5):
     random_string += random_char           # прибавляем к строке
 
 print("Random string:", random_string)
+
 #4
 import datetime
 
@@ -102,6 +104,7 @@ def show_current_date():
 
 # Вызов функции
 show_current_date()
+
 #5
 import datetime
 
