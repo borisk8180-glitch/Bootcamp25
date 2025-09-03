@@ -4,10 +4,14 @@
 # It uses the AnagramChecker class to validate input and find anagrams.
 
 from anagram_checker import AnagramChecker
+import os
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+file_path = os.path.join(dir_path, "sowpods.txt")
 
 def main():
     # Create an instance of AnagramChecker, passing the dictionary text file
-    checker = AnagramChecker("words.txt")  # <-- Replace "words.txt" with your file
+    checker = AnagramChecker(file_path)  
     
     while True:
         print("\n--- ANAGRAM PROGRAM ---")
