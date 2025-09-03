@@ -16,8 +16,8 @@ class Text:
         :param word: Word to count
         :return: Count of the word or None if not found
         """
-        words = self.text.split()
-        count = words.count(word)
+        words = self.text.split() # Split the text into words, putting them in a list
+        count = words.count(word) # Count occurrences of the word parameter in the list
         return count if count > 0 else None
 
     def most_common_word(self):
@@ -25,12 +25,13 @@ class Text:
         Find the most common word in the text.
         :return: The most frequent word
         """
-        words = self.text.split()
+        words = self.text.split() # Split the text into words, putting them in a list
         frequency = {}
 
         # Count word frequencies
         for word in words:
-            frequency[word] = frequency.get(word, 0) + 1
+            frequency[word] = frequency.get(word, 0) + 1 #find the word in the dictionary, 
+                                        # if it's not there, set it to 0, then add 1 to it
 
         # Find the word with the maximum frequency
         most_common = max(frequency, key=frequency.get)
@@ -42,7 +43,7 @@ class Text:
         :return: List of unique words
         """
         words = self.text.split()
-        unique = set(words)
+        unique = set(words) # set automatically removes duplicates
         return list(unique)
 
     @classmethod
@@ -64,7 +65,13 @@ class TextModification(Text):
         Remove punctuation from the text.
         :return: Modified text without punctuation
         """
-        no_punct = self.text.translate(str.maketrans("", "", string.punctuation))
+        no_punct = self.text.translate(str.maketrans("o", "x", string.punctuation))
+        """
+        The translate() method returns a string where some specified characters are replaced with the character
+        described in a dictionary, or in a mapping table.
+        The mapping table is created using the str.maketrans() static method, which maps characters
+        to their replacements or marks them for deletion
+        """
         return no_punct
 
     def remove_stop_words(self):
@@ -75,9 +82,9 @@ class TextModification(Text):
         # Example stop words list (could be extended with NLTK or other libraries)
         stop_words = {"a", "the", "is", "in", "at", "to", "and", "of", "on", "it"}
 
-        words = self.text.split()
-        filtered_words = [word for word in words if word.lower() not in stop_words]
-        return " ".join(filtered_words)
+        words = self.text.split() # Split the text into words, putting them in a list
+        filtered_words = [word for word in words if word.lower() not in stop_words] # List comprehension to filter out stop words
+        return " ".join(filtered_words) # Join the filtered words back into a string
 
     def remove_special_characters(self):
         """
