@@ -16,7 +16,7 @@ class Card:
         # Store the card's value (string)
         self.value = value
 
-    def __repr__(self):
+    def __repr__(self): # triggered for debugging and printing
         """
         This method controls how the object will be displayed when printed.
         Example: Card("Hearts", "A") --> "A of Hearts"
@@ -50,6 +50,8 @@ class Deck:
         It combines each suit with each value.
         """
         self.cards = [Card(suit, value) for suit in self.suits for value in self.values]
+        #self.cards = [Card(suit, value) [for suit in self.suits] [for value in self.values]]
+        #print(self.cards)
 
     def shuffle(self):
         """
