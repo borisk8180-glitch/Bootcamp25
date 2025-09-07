@@ -2,7 +2,6 @@ print("=== How Much Sleep Do Americans Really Get? Dataset ===")
 # Import necessary libraries
 import pandas as pd
 import os
-
 # -------------------------------
 # 1. Load the datasets
 # -------------------------------
@@ -19,8 +18,13 @@ credit_card_df = pd.read_csv(file_path_approvals_df)
 # 2. Display the first few rows of each dataset
 # -------------------------------
 print("=== How Much Sleep Do Americans Really Get? Dataset ===")
-print(sleep_df.head(), "\n")
-
+print(sleep_df.head(2), "\n")
+# print(sleep_df['Period'], "\n")
+# print(sleep_df['sleeping'] > 8, "\n")
+# print(credit_card_df.groupby('Avg hrs per day sleeping').mean(), "\n")
+# print(credit_card_df[''Bipolar disorder (%)'].type, "\n")
+# print(int(credit_card_df['Bipolar disorder (%)']) > 5, "\n")
+# print(credit_card_df.describe(), "\n")
 print("=== Global Trends in Mental Health Disorder Dataset ===")
 print(mental_health_df.head(), "\n")
 

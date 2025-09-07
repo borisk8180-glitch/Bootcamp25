@@ -26,10 +26,10 @@ class Human:
         Adds a family member both ways (mutual relation).
         Prevents duplicates.
         """
-        if person not in self.family:
-            self.family.append(person)
-        if self not in person.family:
-            person.family.append(self)
+        if person not in self.family: #if person not already in family of the 1st person so we don't add duplicates
+            self.family.append(person)# adds family member to family list of the 1st person
+        if self not in person.family: # if self not already in the second person's family so we don't add duplicates
+            person.family.append(self) # adds family member to person to family list of the 2nd person
 
 
 class Queue:
@@ -38,7 +38,7 @@ class Queue:
     Internally uses a list self.humans.
     """
     def __init__(self):
-        self.humans = []
+        self.humans = [] # starts with an empty list of humans
 
     def add_person(self, person):
         """
@@ -46,14 +46,14 @@ class Queue:
         If person is priority or older than 60, place them at the beginning.
         Otherwise, add at the end.
         """
-        new_list = []
+        new_list = [] # temporary list to build the new order
         if person.priority or person.age > 60:
-            # Place at beginning
+            # Place at beginning of temp list
             new_list.append(person)
             # Copy rest
             for h in self.humans:
                 new_list.append(h)
-            self.humans = new_list
+            self.humans = new_list #copy back to self.humans
         else:
             # Place at end
             self.humans.append(person)
@@ -63,7 +63,7 @@ class Queue:
         Returns the index of a person in the queue.
         Returns None if not found.
         """
-        for i in range(len(self.humans)):
+        for i in range(len(self.humans)): # iterate through the list to find the person
             if self.humans[i] == person:
                 return i
         return None
@@ -75,7 +75,7 @@ class Queue:
         idx1 = self.find_in_queue(person1)
         idx2 = self.find_in_queue(person2)
         if idx1 is not None and idx2 is not None:
-            self.humans[idx1], self.humans[idx2] = self.humans[idx2], self.humans[idx1]
+            self.humans[idx1], self.humans[idx2] = self.humans[idx2], self.humans[idx1] #exchange indexes
 
     def get_next(self):
         """
@@ -86,7 +86,7 @@ class Queue:
             return None
         # Remove first without using pop(0)
         next_person = self.humans[0]
-        self.humans = [self.humans[i] for i in range(1, len(self.humans))]
+        self.humans = [self.humans[i] for i in range(1, len(self.humans))] #remove first person by rebuilding list without index 0
         return next_person
 
     def get_next_blood_type(self, blood_type):
@@ -112,13 +112,13 @@ class Queue:
         """
         # Manual bubble sort implementation
         n = len(self.humans)
-        for i in range(n):
+        for i in range(n): #from 0 to the length of the list
             for j in range(0, n - i - 1):
                 h1 = self.humans[j]
                 h2 = self.humans[j + 1]
 
                 # Define custom comparison
-                def should_swap(a, b):
+                def should_swap(a, b): # returns True if a should come after b
                     if a.priority and not b.priority:
                         return False  # a before b
                     if not a.priority and b.priority:
@@ -138,17 +138,17 @@ class Queue:
         - If two consecutive members are from the same family, try to swap the second one with
           someone further down who is not in the family.
         """
-        for i in range(len(self.humans) - 1):
+        for i in range(len(self.humans) - 1): #until the second last person since they don't have a neighbor after them
             current = self.humans[i]
             next_person = self.humans[i + 1]
 
-            if next_person in current.family:
+            if next_person in current.family: # in the family of the person being checked
                 # Look ahead for someone not in the family
-                for j in range(i + 2, len(self.humans)):
+                for j in range(i + 2, len(self.humans)): #start with the third person after current
                     if self.humans[j] not in current.family:
                         # Swap them
                         self.humans[i + 1], self.humans[j] = self.humans[j], self.humans[i + 1]
-                        break
+                        break # break after first valid swap and continue with the next i
 
 
 # -----------------------------------------------

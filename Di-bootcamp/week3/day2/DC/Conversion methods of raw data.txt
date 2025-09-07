@@ -1,0 +1,104 @@
+1) A series of blog posts about travel experiences
+
+Method (summary): scrape/ingest the posts → extract metadata + clean text → run NLP to pull entities, topics, sentiment, locations → normalize/geo-code → store records.
+Steps
+
+Ingest: fetch HTML (or use RSS/API) and save raw HTML + post ID.
+
+Parse & normalize: extract title, author, publish date, tags, images, main body (use boilerplate removal).
+
+NLP extraction: run language detection, tokenization, named-entity recognition (places, hotels, attractions), keyphrase extraction, sentiment analysis, and topic classification.
+
+Geo-normalize: convert place names to standardized location fields (city, country, lat/lon) with a geocoder.
+
+Store: one row per post in a table, plus linked tables for mentions (places), images, and tags.
+Example schema (one table):
+Post_ID | Title | Author | Publish_Date | Language | Summary | Sentiment | Primary_Location | Lat | Lon | Main_Topics | Keywords | Word_Count | URL
+Tools/techniques: HTML parsers (requests + BeautifulSoup / newspaper libraries), spaCy/NLP models, geocoding API, deduplication.
+Reasoning: blog posts are semi-structured (metadata + long text). Extracting metadata + entities turns free text into searchable, filterable columns (e.g., all posts about “Lisbon” or posts with negative sentiment). This enables analytics (popular locations, average sentiment by destination, cost comparisons).
+Quality notes: handle multilingual posts, remove boilerplate, keep raw text for audits, and use human review for uncertain geocoding or topic labels.
+
+2) Audio recordings of customer service calls
+
+Method (summary): perform speaker diarization + high-quality ASR → enrich transcripts with timestamps, intent & sentiment analysis, and call metrics → redact PII → store structured call-level and segment-level records.
+Steps
+
+Ingest: store raw audio and minimal metadata (call_id, timestamp, agent_id).
+
+Preprocess: noise reduction, channel separation.
+
+Diarization: label speaker segments (agent vs customer).
+
+ASR (speech-to-text): produce time-aligned transcripts.
+
+NLP on transcript: detect intents (billing, cancellation, support), extract entities (product names, order numbers), measure sentiment/emotion per segment, and flag regulatory/compliance phrases.
+
+Compute KPIs: call duration, silence/hold time, interruption rate, resolution flag.
+
+PII redaction & compliance: detect and redact credit card numbers, SSNs, and other sensitive data before storing/transferring.
+
+Store: call-level table + segment-level table (timestamps, speaker, transcript segment, sentiment, intents).
+Example schema (call-level):
+Call_ID | Agent_ID | Customer_ID | Start_Time | Duration | ASR_Confidence | Main_Intents | Overall_Sentiment | Outcome | Redaction_Flag | Transcript_Link
+Reasoning: transcripts + diarization convert audio into searchable text and actionable metrics. Segmenting by speaker plus intent detection makes it possible to monitor agent performance, automate routing, and spot compliance issues.
+Tools/techniques: ASR engines (Whisper/Cloud STT), diarization toolkits, NLP intent classifiers, regex for PII, human-in-loop review for low-confidence parts.
+Privacy & legal: obtain consent, encrypt stored audio/transcripts, apply retention policies, and ensure redaction before using data for analytics.
+
+3) Handwritten notes from a brainstorming session
+
+Method (summary): digitize with high-res imaging → handwriting OCR or human transcription → structure into discrete “ideas” with metadata (author, confidence, tags, relationships) → optionally convert to mind-map nodes.
+Steps
+
+Capture: scan or photograph pages with good lighting; store raw images.
+
+Preprocess: image enhancement (deskew, contrast).
+
+Handwriting recognition: attempt automated HTR (handwritten text recognition) or use human transcribers for messy handwriting. Use layout analysis to detect columns/boxes/bullets.
+
+Segmentation & parsing: split into notes/lines/actions; detect checkboxes/arrows/priority marks.
+
+NLP & tagging: run keyword extraction, cluster similar ideas, label action items and owners (if annotated).
+
+Store: one row per note/idea with links to page/image and spatial coordinates. Also store relationships (idea A -> idea B) if arrows were present.
+Example schema (idea-level):
+Idea_ID | Page_ID | Text | Author (if known) | Confidence_Score | Is_Action_Item | Priority | Tags | X,Y_bbox | Image_Link
+Reasoning: brainstorming notes are spatial and often free-form; converting them into discrete, tagged ideas makes them discoverable, searchable, and trackable as tasks. Preserving coordinates and original image helps audit context (e.g., an arrow connecting two notes).
+Tools/techniques: OCR/HTR engines (for printed vs cursive), computer vision for layout detection, human verification for low-confidence outputs, tools to export to Trello/Jira or mind-map formats.
+Practical tip: expect variable accuracy—plan for a light human review step and capture metadata like the session facilitator and date.
+
+4) A video tutorial on cooking
+
+Method (summary): extract audio → ASR → timestamped transcript → video analysis (shot detection, OCR on on-screen text, object/ingredient/tool detection) → align recipe steps with timestamps and images → store structured recipe and step-by-step dataset.
+Steps
+
+Ingest: keep raw video file and basic metadata (uploader, title, duration).
+
+Audio → ASR: get time-aligned transcript (captions).
+
+Vision analysis: run shot/scene detection to find step boundaries; use object detection on frames to identify ingredients, utensils, and cooking actions (e.g., chopping, frying). Use OCR to capture any on-screen measurements or timers.
+
+Align & extract recipe structure: identify ingredients list (with quantities if spoken/onscreen), steps with start/end timestamps, estimated times, servings, tips, and difficulty. Capture representative thumbnail for each step.
+
+Enrich: classify cuisine, diet tags (vegan, gluten-free), estimated prep/cook times, and create a searchable ingredient index.
+
+Store: recipe table + steps table (with timestamps, action verbs, ingredient links) + detected objects table.
+Example schemas:
+Recipe: Recipe_ID | Title | Uploader | Servings | Prep_Time | Cook_Time | Cuisine | Difficulty | URL
+Step: Step_ID | Recipe_ID | Step_Order | Start_TS | End_TS | Instruction_Text | Ingredients_Used | Tool_List | Thumbnail_Link
+Reasoning: cooking videos contain both audio instructions and visual demonstrations; combining ASR with visual detection yields a structured, time-aligned recipe that can power step-by-step viewers, ingredient search, or conversion into text recipes. Timestamps let you jump to exact moments.
+Tools/techniques: ASR, shot-detection, object detection (ingredients/tools), OCR for on-screen text, pose/action recognition for complex gestures. Human review improves extraction of quantities and ambiguous ingredient names.
+Quality note: spoken quantities may be ambiguous (“a cup” vs “one cup”) — validation or human correction helps produce usable recipe data.
+
+Cross-cutting best practices (applies to all)
+
+Keep raw files alongside extracted structured records for traceability.
+
+Assign unique IDs & versioning so you can reprocess with improved models later.
+
+Human-in-the-loop for low-confidence items (handwriting, noisy audio, ambiguous visual detections).
+
+Audit & quality metrics (ASR confidence, OCR confidence, entity match rates) stored as columns to drive sampling for review.
+
+Privacy & compliance: redact PII, get consent for recordings, and encrypt sensitive fields.
+
+Storage choices: small-scale → relational DB (Postgres) or CSV; search & analytics → document store / Elasticsearch + data warehouse for aggregated metrics.
