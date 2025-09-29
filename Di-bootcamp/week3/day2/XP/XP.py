@@ -1,15 +1,4 @@
 #1
-# A company’s financial reports stored in an Excel file → Structured data (organized into rows, columns, numbers, and formulas).
-
-# Photographs uploaded to a social media platform → Unstructured data (image files without inherent tabular format).
-
-# A collection of news articles on a website → Unstructured data (textual data, though some metadata like date, author can be semi-structured).
-
-# Inventory data in a relational database → Structured data (tables with defined fields: product ID, quantity, price, etc.).
-
-# Recorded interviews from a market research study → Unstructured data (audio/video recordings, may need transcription for structure).
-
-#3
 import pandas as pd
 import os
 # -------------------------------

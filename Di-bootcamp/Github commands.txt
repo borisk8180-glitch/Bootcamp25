@@ -1,0 +1,69 @@
+mkdir git_practice
+git init
+git status
+git add text.txt
+git commit -m "Created new text file - initial commit"
+git branch new_feature
+git branch
+git checkout new_feature
+git checkout master
+git fetch
+git pull
+
+============================================
+
+Working in groops using github
+
+Open command prompt in VS-Code
+type git init to initialize empty repository
+type git status
+<h2>Readme file</h2>
+file in a folder using source control - press  + (git add)
+press Commit button
+type git push from the command line for checking
+create new repository in github
+type git remote add origin <url of depository> to connect to depository from local machine
+
+назначение папки в репозиторий (на локальном компе)
+git init
+связь с удаленным репозиторием
+git remote add origin <url>
+скачать файлы из удаленного репозитория
+git clone <url>
+=================================
+add file to commit
+git_practice1>echo "# git_practice" > README.md
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+=================================
+add a feature to a file and switch to new branch
+git checkout -b feature1
+
+=================================
+you can use guide from github to create repository
+
+push an existing repository from the command line
+
+=================================
+
+working with collaborators
+
+go to settings - collaborators
+
+===============================
+deleting file
+git rm filename.py
+git commit -m "Delete unwanted file from branch"
+git push origin branch-name
+================================
+загрузить из ветки в main
+git rebase
+
+================================
+отменить коммит
+git revert + # of commit
+
+
+
+
