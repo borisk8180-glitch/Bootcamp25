@@ -1,0 +1,14 @@
+перепиши код в соответствии со следующими полями:
+
+games_competitor:
+id,games_id, person_id, age
+
+competitor_event:
+event_id, competitor_id, media_id
+
+person:
+id, full_name, gender, height, weight
+
+medal:
+id, medal_name
+
