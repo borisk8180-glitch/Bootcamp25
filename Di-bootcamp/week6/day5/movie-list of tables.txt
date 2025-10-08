@@ -1,0 +1,22 @@
+list of tables:
+
+genre: genre_id, genre_name
+
+movie: movie_id, title, budget, homepage, overview, popularity, release_date, revenue, runtime, movie_status, tagline, vote_average, vote_count
+
+movie_genres: movie_id, genre_id
+
+production_company: company_id, company_name
+
+movie_company: movie_id, company_id
+
+person: person_id, person_name
+
+movie_cast: movie_id, person_id, character_name, gender_id, cast_order
+
+movie_crew: movie_id, person_id, department_id, job
+
+
+
+
+

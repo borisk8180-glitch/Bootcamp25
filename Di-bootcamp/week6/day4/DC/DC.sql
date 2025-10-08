@@ -25,7 +25,7 @@ JOIN olympics.competitor_event ce
 JOIN olympics.games AS g
     ON g.id = gc.games_id
 JOIN olympics.medal AS m
-    ON ce.medal_id = m.id
+    ON ce.medal_id = m.id AND m.medal_name <> 'NA'
 
 -- Grouping by competitor
 GROUP BY p.id, p.full_name
