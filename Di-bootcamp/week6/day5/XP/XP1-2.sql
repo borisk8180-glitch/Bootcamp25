@@ -1,3 +1,5 @@
+-- Use the NTILE() function to divide the movies produced by each production company into quartiles based on revenue. 
+-- Display the company name, movie title, revenue, and quartile.
 SELECT
     pc.company_name,
     m.title,

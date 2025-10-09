@@ -16,6 +16,12 @@ movie_cast: movie_id, person_id, character_name, gender_id, cast_order
 
 movie_crew: movie_id, person_id, department_id, job
 
+movie_keywords: movie_id, keyword_id
+
+keyword: keyword_id, keyword_name
+
+
+
 
 
 
