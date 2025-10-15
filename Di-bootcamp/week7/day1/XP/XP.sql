@@ -114,7 +114,17 @@ FROM (
     GROUP BY year_month
 ) AS monthly_counts;
 
+SELECT date, COUNT(*)
+FROM temp_employee
+GROUP BY date
+LIMIT 10;
+
+DELETE FROM temp_employee
+WHERE date IS NULL OR TRIM(date) = '';
+
+
 --Minimum and maximum number of employees by month and when they were
+DROP TABLE IF EXISTS monthly_counts;
 CREATE TEMP TABLE IF NOT EXISTS monthly_counts AS
 SELECT 
     strftime('%Y-%m', date) AS year_month,
