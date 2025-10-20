@@ -5,7 +5,7 @@ SELECT
     g.genre_name,
     m.title,
     m.budget,
-    SUM(m.budget) OVER (PARTITION BY g.genre_name ORDER BY m.budget --means the running total restarts for each genre
+    SUM(m.budget) OVER (PARTITION BY g.genre_name ORDER BY m.date --means the running total restarts for each genre
         ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total_budget
 FROM movies.movie AS m
 JOIN movies.movie_genres AS mg ON m.movie_id = mg.movie_id

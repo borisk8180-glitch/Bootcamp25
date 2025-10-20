@@ -31,7 +31,7 @@ INSERT INTO employees (employee_id, employee_name, salary, hire_date, department
 (19, 'Jane Hill', 81000.50, '2022-03-15', 'Sales'),
 (20, 'Dave White', 70000.25, '2017-12-20', 'Marketing');
 
---Check for missing values
+--Check for missing values. Use conditional statements
 SELECT 
     COUNT(*) AS total_rows,
     SUM(CASE WHEN employee_name IS NULL OR TRIM(employee_name) = '' THEN 1 ELSE 0 END) AS missing_name,
@@ -59,11 +59,12 @@ SET hire_date = '2000-01-01'
 WHERE hire_date IS NULL OR TRIM(hire_date) = '';
 
 --Remove duplicate rows
-DELETE FROM employees
-WHERE rowid NOT IN (
-    SELECT MIN(rowid)
+DELETE FROM employees --we delete all but the unique ones or with the lowest rowid
+WHERE rowid NOT IN ( --In SQLite, each row has a unique rowid, even if there is no explicit primary key.
+    SELECT MIN(rowid) --The minimum rowid is selected from each group, that is, one row from the group is the one that will be saved.
     FROM employees
-    GROUP BY employee_id, employee_name, salary, hire_date, department
+    GROUP BY employee_id, employee_name, salary, hire_date, department --if there are more than 1 group of similar values then..
+  	--Groups rows by all columns, which determine the uniqueness of the record.
 );
 
 --Standardize text columns
@@ -102,10 +103,14 @@ UPDATE employees
 SET salary = 20000
 WHERE salary < 20000;
 
---Optional: Normalize salary (0–1 scale)
+--Normalize salary (0–1 scale)
 ALTER TABLE employees ADD COLUMN salary_normalized REAL;
 
 UPDATE employees
-SET salary_normalized = (salary - (SELECT MIN(salary) FROM employees)) * 1.0 /
-                        ((SELECT MAX(salary) FROM employees) - (SELECT MIN(salary) FROM employees));
+SET salary_normalized = (salary - (SELECT MIN(salary) --calculates how much a particular employee's salary is higher than the minimum wage in the table.
+                                   FROM employees)) * 1.0 / --It shows how far along the path from the minimum to the maximum the current salary is.
+                                   							--translates any number into a range from 0 to 1.
+                                   							--SQLite needs to perform real (not integer) division.
+                        ((SELECT MAX(salary) FROM employees) - (SELECT MIN(salary) --this is the salary range: the difference between the largest and the smallest.
+                                                                FROM employees));
 
