@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>This is my dynamic page</title>
+</head>
+<body>
+    <h1 id="mainHeading">Welcome to My Dynamic Page</h1>
+    <p>This page uses JavaScript to modify the content automatically.</p>
+    <ul>
+        <li>Interactive behavior</li>
+        <li>Dynamic updates</li>
+        <li>More engaging experience</li>
+    </ul>
+
+    <script>
+        // Wait until the page loads
+        window.onload = function() {
+            // Access the heading element by its ID
+            const heading = document.getElementById("mainHeading");
+            
+            // Change its text dynamically
+            heading.innerHTML = "This is something new!";
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+You
+09:37
+As a result, something like a loop is executed for all the items in the lists.:
+1. We take one <p> object from the list.
+2. Extract the text from it using .text.
+3. Trim spaces and hyphenation using .strip().
+4. Save the result to a new list of lines.
+# Exercise 2 : Scraping robots.txt from Wikipediaё
+import requests
+
+url = "https://en.wikipedia.org/robots.txt"
+
+# Add a browser-like User-Agent header
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                  "AppleWebKit/537.36 (KHTML, like Gecko) "
+                  "Chrome/118.0.5993.70 Safari/537.36"
+}
+
+response = requests.get(url, headers=headers)
+
+if response.status_code == 200:
+    print(" Wikipedia robots.txt content:\n")
+    print(response.text)
+else:
+    print(f" Failed to retrieve robots.txt. Status code: {response.status_code}")
+Python Instructor
+10:24
+let x = 42;
+undefined
+let y = 58;
+undefined
+x+y
+100
+console.log('Hello world')
+VM342:1 Hello world
+undefined
+let message = "Hello everyone, I'm running in the browser"
+undefined
+console.log(message)
+VM554:1 Hello everyone, I'm running in the browser
+undefined
+let input_tag = document.getElementById('inputWrapper')
+undefined
+console.log(input_tag)
+VM2217:1 null
+undefined
+input_tag
+null
+let input_tag = $0
+undefined
+console.log(input_tag)
+VM2416:1 <div id=​"inputWrapper">​…​</div>​<input id=​"input" class=​"truncate" type=​"search" autocomplete=​"on" spellcheck=​"false" role=​"combobox" aria-controls=​"matches" aria-expanded=​"false" aria-description placeholder=​"Search Google or type a URL" aria-live=​"polite">​<cr-searchbox-icon id=​"icon" in-searchbox background-image mask-image=​"url(/​/​resources/​cr_components/​searchbox/​icons/​search_cr23.svg)​">​…​</cr-searchbox-icon>​flex<dom-if style=​"display:​ none;​">​…​</dom-if>​<dom-if style=​"display:​ none;​">​…​</dom-if>​<button id=​"voiceSearchButton" class=​"searchbox-icon-button" title=​"Search by voice">​</button>​<dom-if style=​"display:​ none;​">​…​</dom-if>​<button id=​"lensSearchButton" class=​"searchbox-icon-button lens" title=​"Search by image">​</button>​<dom-if style=​"display:​ none;​">​…​</dom-if>​<dom-if style=​"display:​ none;​">​…​</dom-if>​<dom-if style=​"display:​ none;​">​…​</dom-if>​<cr-searchbox-dropdown id=​"matches" part=​"searchbox-dropdown" exportparts=​"dropdown-content" role=​"listbox" hidden>​…​</cr-searchbox-dropdown>​</div>​
+undefined
+let input_tag = $0
+undefined
+console.log(input_tag)
+VM2994:1 <input id=​"input" class=​"truncate" type=​"search" autocomplete=​"on" spellcheck=​"false" role=​"combobox" aria-controls=​"matches" aria-expanded=​"false" aria-description placeholder=​"Search Google or type a URL" aria-live=​"polite">​
+undefined
+input_tag.placeholder = 'Search Bing if you want bad results'
+'Search Bing if you want bad results'
+let input_div = input_tag.parentElement
+undefined
+console.log(input_div)
+VM3325:1 <div id=​"inputWrapper">​…​</div>​<input id=​"input" class=​"truncate" type=​"search" autocomplete=​"on" spellcheck=​"false" role=​"combobox" aria-controls=​"matches" aria-expanded=​"false" aria-description placeholder=​"Search Bing if you want bad results" aria-live=​"polite">​<cr-searchbox-icon id=​"icon" in-searchbox background-image mask-image=​"url(/​/​resources/​cr_components/​searchbox/​icons/​search_cr23.svg)​">​…​</cr-searchbox-icon>​flex<dom-if style=​"display:​ none;​">​…​</dom-if>​<dom-if style=​"display:​ none;​">​…​</dom-if>​<button id=​"voiceSearchButton" class=​"searchbox-icon-button" title=​"Search by voice">​</button>​<dom-if style=​"display:​ none;​">​…​</dom-if>​<button id=​"lensSearchButton" class=​"searchbox-icon-button lens" title=​"Search by image">​</button>​<dom-if style=​"display:​ none;​">​…​</dom-if>​<dom-if style=​"display:​ none;​">​…​</dom-if>​<dom-if style=​"display:​ none;​">​…​</dom-if>​<cr-searchbox-dropdown id=​"matches" part=​"searchbox-dropdown" exportparts=​"dropdown-content" role=​"listbox" hidden>​…​</cr-searchbox-dropdown>​</div>​
+undefined
+let myp = document.createElement('p')
+undefined
+console.log(myp)
+VM3615:1 <p>​</p>​
+undefined
+myp.innerText = 'This is a paragraph that I created dynamically'
+'This is a paragraph that I created dynamically'
+console.log(myp)
+VM3757:1 <p>​This is a paragraph that I created dynamically​</p>​
+undefined
+input_tag.insertAdjacentElement(myp)
+             
+eit-gauu-cdi
+
+==================================
+
+<html>
+     <head>
+         <title>2020 Oscar nominees and winners</title>
+
+         <script>
+    console.log('Javascript was run.')
+    function showAlert() {
+        alert("Button clicked!");
+    }
+
+    // Api Call
+    let highlights = ['Joker',
+             '1917',
+             'Once Upon a Time in Hollywood',
+             'The Irishman'];
+    let hl = document.getElementsByClassName('highlights')[0];
+    console.log('ul element', hl)
+    for (let i = 0; i < highlights.length; i++) {
+        let highlight = highlights[i];
+        let hlel = document.createElement('li');
+        hlel.innerText = highlight;
+        hl.appendChild(hlel)
+        console.log(hl)
+        }
+    </script>
+    </head>
+    
+
+     <body>
+     <button onclick="showAlert()">Click Me</button>
+
+        <h1>Oscars 2020</h1>
+         <p>The biggest cinema awards ceremony took place in February. This year's highlights were:</p>
+         <ul class="highlights">
+             
+         </ul>
+         <p>See the winners of 3 categories below.</p>
+         <div>
+             <div class="best-film-category">
+                 <h2>Category: best film</h2>
+                 <ul>
+                     <li>Ford vs Ferrari</li>
+                     <li>The Irishman</li>
+                     <li>JoJo Rabbit</li>
+                     <li>Joker</li>
+                     <li>Little Women</li>
+                     <li>Marriage Story</li>
+                     <li>1917</li>
+                     <li>Once Upon a Time in Hollywood</li>
+                     <li class="winner">Parasite <strong>[WINNER]</strong></li>
+                 </ul>
+             </div>
+             <br>
+             <div class="best-actor-category">
+                 <h2>Category: best actor</h2>
+                 <ul>
+                     <li>Antonio Banderas - Pain and Glory</li>
+                     <li>Leonardo DiCaprio - Once Upon a Time In... Hollywood</li>
+                     <li>Adam Driver - Marriage Story</li>
+                     <li class="winner">Joaquin Phoenix - Joker <strong>[WINNER]</strong></li>
+                     <li>Jonathan Price - The Two Popes</li>
+                 </ul>
+             </div>
+             <br>
+             <div class="best-actress-category">
+                 <h2>Category: best actress</h2>
+                 <ul>
+                     <li>Cythia Erivo - Harriet</li>
+                     <li>Scarlett Johansson - Marriage Story</li>
+                     <li>Saoirse Ronan - Little Women</li>
+                     <li>Charlize Theron - The Scandal</li>
+                     <li class="winner">Renée Zellweger - Judy: Far Over the Rainbow <strong>[WINNER]</strong></li>
+                 </ul>
+             </div>
+         </div>
+     </body>
+</html>
+Collapse
+
+
+
+
+
+
+
+
+
