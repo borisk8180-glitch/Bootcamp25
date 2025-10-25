@@ -1,0 +1,28 @@
+🧱 3. Как выбирать правильный селектор
+Что ты хочешь найти	Пример кода BeautifulSoup
+Все теги <h3>	soup.find_all('h3')
+Все элементы с классом price	soup.find_all(class_='price')
+Элемент с конкретным id	soup.find(id='main')
+Все <div> с классом plan-title	soup.find_all('div', class_='plan-title')
+Любой тег с атрибутом data-qa="item"	soup.find_all(attrs={'data-qa': 'item'})
+
+//*[@id="dedicated-servers-rostrum"]/div[2]/div[1]/div[2]/div[2]/ul/li[3]/span
+
+imh-rostrum-detail tooltips-rostrum
+imh-rostrum-card
+
+🧠 Tip: Always test each selector in the Console first
+
+Before running Selenium:
+
+document.querySelectorAll('your_selector').length → check it finds elements.
+
+document.querySelectorAll('your_selector')[0].innerText → check what text you get.
+
+imh-rostrum-detail tooltips-rostrum
+
+
+.rostrum-price
+h3 imh-rostrum-card-title
+
+https://www.inmotionhosting.com/wp-content/themes/imh-responsive/js/inc/tooltips-rostrum.json?cb=1761310800000
