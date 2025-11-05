@@ -1,0 +1,14 @@
+# Byte-compiled / cache files
+__pycache__/
+*.pyc
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints
+
+# Large datasets
+*.csv
+*.h5
+*.sqlite
+
+# VS Code settings
+.vscode/

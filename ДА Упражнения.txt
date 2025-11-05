@@ -1,0 +1,388 @@
+Exercises Python intro
+
+first = "Hello world"
+#This is a comment
+print( "I AM A COMPUTER")
+
+if 1 < 2 and 4 > 2:
+    print("math is fun!")
+
+nope = ""
+
+print(11 > 3 and 12 < 30)
+
+print(len("What is my length?"))
+
+print("I am shouting".upper())
+
+print(int('1000'))
+
+print(str(4) + 'real')
+
+print(3 * "cool") #coolcoolcool
+
+print( 1 / 0) #Error div by 0
+
+list
+
+name = input("Enter your name: ")
+
+number = int(input("Enter a number: "))
+if number < 0:
+    print("That number is less than 0!")
+elif number > 0:
+    print ("That number is greater than 0!")
+else:
+    print("You picked 0!")  
+
+print('Apple'.index('l'))
+
+if 'xylophone'.index('y'):
+    print('Found')
+
+print('mystring'.lower())
+
+Cat and dog years
+
+h_age = int(input("Enter your age: "))
+if h_age <= 1:
+    print(f"Cat & dog years = 15")
+elif h_age == 2:
+    print(f"Cat & dog years = {15+9}")
+elif h_age>2:
+    print(f"Cat years = {15+9+((h_age-2)*4)}")
+    print(f"Dog years = {15+9+((h_age-2)*5)}")
+
+==================Class 20.08.25
+description = "strings are ..."
+print(description.upper())
+print(description.replace('are','is'))
+print(description[:7])
+#NUMBERS
+age = 35
+age += 1
+print(age)
+print(10 % 3) #module
+my_age = 35
+print(my_age + 123879)
+first_name = 'Boris'
+last_name = 'Khusid'
+print(f'{first_name} {last_name}')
+
+user_name = input('Enter your name')
+name_len = len(user_name)
+if name_len < 5:
+    print('You have a short name')
+
+my_number = int(input('What is your number?'))
+if (my_number % 3) > 0:
+    print('Yout number can\'t be devided by 3')
+==================ДЗ 20.08.25
+
+#1
+print('Hello World')
+#2
+print((99 ^ 3) * 8)
+#3
+False
+True
+False
+Error
+False
+#4
+computer_brand = 'ASUS'
+print(f'I have a {computer_brand} computer')
+#5
+name = 'Boris'
+age = 35
+shoe_size = 45
+info = f'My name is {name}, my age is {age}, my shoe size is {shoe_size}.'
+print(info)
+#6
+a = 7
+b = 5
+if a > b:
+    print('Hello World')
+#7
+number = int(input('Enter a number'))
+if (number % 2) > 0:
+    print('It\'s odd number')
+else:
+    print('It\'s even number')
+#8
+name = input('Enter your name')
+if name == 'Boris':
+    print('We have the same name!')
+#9
+height = float(input('Enter your height'))
+if height > 145:
+    print('You are tall enough to ride')
+else:
+    print('You have to grow up to ride')
+===========================XP Gold
+#2
+month = int(input('Please, enter a month'))
+if month < 1 or month >12:
+    print('Enter a correct month!')
+else:
+    if month >=3 and month <=5:
+        print('It is a spring')    
+    elif month >=6 and month <=8:
+        print('It is a summer')  
+    elif month >=9 and month <=11:
+        print('It is an autumn')    
+    elif month ==12 or month <=2:
+        print('It is a winter')      
+==============================Daily Challenge
+phrase = input('Enter a phrase exactly 10 characters long')
+if len(phrase) > 10:
+    print('Phrase is too long')
+elif len(phrase) < 10:
+    print("Phrase is too short")
+else:
+    print('Perfect string')
+    
+==============================21.08.25
+
+my_text = """Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+           Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+           laboris nisi ut aliquip ex ea commodo consequat. 
+           Duis aute irure dolor in reprehenderit in voluptate velit 
+           esse cillum dolore eu fugiat nulla pariatur. 
+           Excepteur sint occaecat cupidatat non proident, 
+           sunt in culpa qui officia deserunt mollit anim id est laborum."""
+print(len(my_text))
+
+list1 = [5, 10, 15, 20, 25, 50, 20]
+list1[list1.index(20)] = 200
+print(list1)
+
+
+my_colors = {'blue', 'green', 'red'}
+my_colors.add('purple')
+print(my_colors)
+friends_colors = {'yellow', 'red', 'white'}
+print(my_colors.intersection(friends_colors))
+print(my_colors.difference(friends_colors))
+my_colors.clear
+
+#for char in 'student':
+#    print(char)
+
+fruits = ['apple', 'watermelon', 'banana']
+for fruit in fruits:
+    print(f'I love {fruit}')
+
+
+student = 'Boris'
+for i in range(len(student)):
+    print(i)
+
+student = 'Boris'
+for i in range(2,len(student)):
+    print(i)
+
+for i in range(1,21):
+    print(i)
+
+for i in my_range(21):
+    print(i)
+
+my_range = list(range(0,21,2))
+for i in my_range:
+    print(i)
+
+==================================HomeWork 21.08
+
+#1
+my_fav_numbers = {2,5,8,}
+my_fav_numbers.add(33)
+my_fav_numbers.add(38)
+print(my_fav_numbers)
+friend_fav_numbers = {3,17,25}
+our_fav_numbers = friend_fav_numbers.union(my_fav_numbers)
+print(our_fav_numbers)
+#2
+my_tuple = (1,3,5)
+# my_tuple.add(4)
+# AttributeError: 'tuple' object has no attribute 'add'
+# PS C:\Users\BOB\Downloads\Data Analysis\Bootcamp25\Di-bootcamp>
+
+#3
+basket = ["Banana", "Apples", "Oranges", "Blueberries"]
+basket.remove('Banana')
+basket.pop()
+basket.append('Kiwi')
+basket.insert(1,'Apples')
+print(basket.count('Apples'))
+print(basket)
+basket.clear()
+print(basket)
+
+#4
+my_list = []
+my_item = 1
+while my_item < 5:
+    my_item += 0.5
+    my_list.append(my_item)
+print(my_list)
+
+#5
+print(list(range(1,21)))
+
+for i in range(1, 21):
+    if i % 2 == 0:   # check if number is even
+        print(i)
+
+#6
+user_name = ""
+while user_name == "":
+    user_name = input("Please, enter your name.")
+print(f'Your name is {user_name}')
+#7
+fav_fruits = input("Enter favorite fruits (you can input several fruits, separated by spaces).")
+lst_fruits = fav_fruits.split()
+fav_fruits = input("Enter the most favorite fruit.")
+if fav_fruits in lst_fruits:
+    print("You chose one of your favorite fruits! Enjoy!")
+else:
+    print("You chose a new fruit. I hope you enjoy it!")
+
+#8
+toppings = []
+
+# Loop to collect toppings
+while True:
+    topping = input("Enter a pizza topping (or type 'quit' to finish): ")
+    
+    if topping.lower() == "quit":
+        break
+    
+    toppings.append(topping)
+    print(f"Adding {topping} to your pizza.")
+
+# Calculate total cost
+base_price = 10
+topping_price = 2.50
+total_cost = base_price + topping_price * len(toppings)
+
+# Print summary
+print("\nYour pizza order summary:")
+print("Toppings:", ", ".join(toppings) if toppings else "No extra toppings")
+print(f"Total cost: ${total_cost:.2f}")
+
+#9
+total_cost = 0
+
+while True:
+    age_input = input("Enter the person's age (or type 'done' to finish): ")
+    
+    if age_input.lower() == "done":
+        break
+    
+    # Convert to integer
+    age = int(age_input)
+    
+    # Apply ticket price rules
+    if age < 3:
+        price = 0
+    elif age <= 12:
+        price = 10
+    else:
+        price = 15
+    
+    total_cost += price
+
+# Print total
+print(f"\nThe total cost for the tickets is: ${total_cost}")
+
+#10
+# Initial list of sandwich orders
+sandwich_orders = ["Tuna", "Pastrami", "Avocado", "Pastrami", "Egg", "Chicken", "Pastrami"]
+
+finished_sandwiches = []
+
+print("Sorry, the deli has run out of Pastrami.\n")
+
+# Remove all instances of "Pastrami"
+while "Pastrami" in sandwich_orders:
+    sandwich_orders.remove("Pastrami")
+
+# Prepare sandwiches
+while sandwich_orders:
+    sandwich = sandwich_orders.pop(0)   # take the first order
+    print(f"I made your {sandwich} sandwich.")
+    finished_sandwiches.append(sandwich)
+
+# Final result
+print("\nAll finished sandwiches:")
+print(finished_sandwiches)
+
+=============================
+
+#1
+phrase = input('Enter a phrase exactly 10 characters long')
+#2
+if len(phrase) > 10:
+    print('Phrase is too long')
+elif len(phrase) < 10:
+    print("Phrase is too short")
+else:
+    print('Perfect string')
+#3
+print(phrase[0])
+print(phrase[-1])
+#4
+result = ''
+for char in phrase:
+    result = result + char
+    print(result)
+
+==============================
+
+birth_date = input('enter your birth date (dd/mm/yyyy): ')
+year = int(birth_date[6:])
+print(year)
+print(type(year))
+age = 2025 - year
+print(age)
+print(type(age))
+
+================================
+
+class Door:
+    def __init__(self, is_opened=False):
+        self.is_opened = is_opened
+
+    def open_door(self):
+        if not self.is_opened:
+            self.is_opened = True
+            print("The door is now open.")
+        else:
+            print("The door is already open.")
+
+    def close_door(self):
+        if self.is_opened:
+            self.is_opened = False
+            print("The door is now closed.")
+        else:
+            print("The door is already closed.")
+
+class BlockedDoor(Door):
+    def open_door(self):
+        raise Exception("This door is blocked and cannot be opened!")
+
+    def close_door(self):
+        raise Exception("This door is blocked and cannot be closed!")
+# Normal door
+door = Door()
+door.open_door()   # The door is now open.
+door.close_door()  # The door is now closed.
+
+# Blocked door
+blocked = BlockedDoor()
+try:
+    blocked.open_door()
+except Exception as e:
+    print(e)  # This door is blocked and cannot be opened!
